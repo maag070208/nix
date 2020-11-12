@@ -111,7 +111,7 @@ body {
   display: grid;
   padding: 5px 40px;
 }
-.right-container footer button {
+.right-container footer button a{
   border: 1px solid rgba(0, 0, 0, 0.2);
   height: 38px;
   line-height: 38px;

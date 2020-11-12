@@ -4,12 +4,34 @@ import bootstrap from "bootstrap/dist/css/bootstrap.min.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Radio, RadioGroup } from "react-custom-radio-buttons";
+import axios from "axios";
+import moment from 'moment';
 
+
+const App = () => {
+
+  
 const options = ["Contado", "Credito"];
 
 const options2 = ["hectárea", "300 m2", "200 m2", "100 m2"];
 
-const App = () => {
+const InsertUser = async (e) => {
+  const newUsers = {
+    nombre: getName,
+    apellido: getApellido,
+    telefono: getTelefono,
+    correo: getCorreoElectronico,
+    fecha: moment(new Date(date)).format('YYYY/MM/DD'),
+    metodopago: size,
+    hectarea: getM2
+  };
+
+  await axios.post(
+    `http://138.68.253.239:3200/wolfs/insert`,
+    newUsers
+  );
+
+};
   const [getName, setName] = useState();
   const [getApellido, setApellido] = useState();
   const [getTelefono, setTelefono] = useState();
@@ -23,9 +45,12 @@ const App = () => {
   const [size, setSize] = useState(null);
   const onChange = (option) => {
     setSize(option);
-    console.log(size);
   };
 
+  const [getM2, setM2] = useState(null);
+  const onChange2 = (optionM) => {
+    setM2(optionM);
+  };
  
   
 
@@ -121,11 +146,11 @@ const App = () => {
             <div className="radio-container">
               <RadioGroup
                 containerStyle="options-container2"
-                onChange={onChange}
+                onChange={onChange2}
               >
-                {options2.map((option) => (
+                {options2.map((optionM) => (
                   <Radio
-                    value={option}
+                    value={optionM}
                     render={({ isSelected }) => (
                       <button
                         className="option2"
@@ -138,7 +163,7 @@ const App = () => {
                           } `,
                         }}
                       >
-                        {option}
+                        {optionM}
                       </button>
                     )}
                   />
@@ -149,8 +174,12 @@ const App = () => {
         </header>
         <footer>
           <div className="set">
-            <button id="back">Back</button>
-            <button id="next">Next</button>
+            <a className="btn btn-danger" href="https://desarrollos.nixgp.com/">Back</a>
+            <a 
+            className="btn btn-primary"
+            onClick={()=>InsertUser()}
+            href="https://desarrollos.nixgp.com/"
+            >Next</a>
           </div>
         </footer>
        
