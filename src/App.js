@@ -1,12 +1,13 @@
 import "./App.css";
 import React, { useState } from "react";
 import bootstrap from "bootstrap/dist/css/bootstrap.min.css";
-import CarbonDatePicker from "react-carbon-datepicker";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Radio, RadioGroup } from "react-custom-radio-buttons";
 
-const options = ["xs", "s", "m"];
+const options = ["Contado", "Credito"];
+
+const options2 = ["hectárea", "300 m2", "200 m2", "100 m2"];
 
 const App = () => {
   const [getName, setName] = useState();
@@ -24,6 +25,9 @@ const App = () => {
     setSize(option);
   };
 
+ 
+  
+
   return (
     <div className="signup-container">
       <div className="left-container">
@@ -40,7 +44,7 @@ const App = () => {
           <h1>Formulario</h1>
           <div className="set">
             <div className="pets-name">
-              <label>My Name Is: {getName} </label>
+              <label>Nombre </label>
               <input
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Nombre"
@@ -48,7 +52,7 @@ const App = () => {
               />
             </div>
             <div className="pets-photo">
-              <label>Apellidos : {getApellido} </label>
+              <label>Apellidos</label>
 
               <input
                 onChange={(e) => setApellido(e.target.value)}
@@ -59,7 +63,7 @@ const App = () => {
           </div>
           <div className="set">
             <div className="pets-breed">
-              <label>Telefono : {getTelefono} </label>
+              <label>Telefono</label>
               <input
                 onChange={(e) => setTelefono(e.target.value)}
                 placeholder="Telefono"
@@ -67,7 +71,7 @@ const App = () => {
               />
             </div>
             <div className="pets-birthday">
-              <label>Correo : {getCorreoElectronico} </label>
+              <label>Correo </label>
               <input
                 onChange={(e) => setCorreoElectronico(e.target.value)}
                 placeholder="user@gmail.com"
@@ -77,15 +81,14 @@ const App = () => {
           </div>
           <div className="set">
             <div className="pets-gender">
-              <label>Gender</label>
+              <label>Fecha</label>
               <div className="radio-container">
                 <DatePicker selected={date} onChange={handleDateChange} />
               </div>
             </div>
             <div className="pets-spayed-neutered">
-              <label>Spayed or Neutered</label>
+              <label>Contado/Credito</label>
               <div className="radio-container">
-                
                 <RadioGroup
                   containerStyle="options-container"
                   onChange={onChange}
@@ -96,10 +99,15 @@ const App = () => {
                       render={({ isSelected }) => (
                         <button
                           className="option"
+                          
                           style={{
                             backgroundColor: ` ${
-                              isSelected ? "#39ab31" : "#f9d10a"
+                              isSelected ? "#000000" : "#ffffff"
                             } `,
+                            color: ` ${
+                              isSelected ? "#fff" : "#000"
+                            } `,
+                          
                           }}
                         >
                           {option}
@@ -108,42 +116,37 @@ const App = () => {
                     />
                   ))}
                 </RadioGroup>
-
-                
               </div>
             </div>
           </div>
           <div className="pets-weight">
             <label>Weight</label>
             <div className="radio-container">
-              <input
-                id="pet-weight-0-25"
-                name="pet-weight"
-                type="radio"
-                value="0-25"
-              />
-              <label>0-25 lbs</label>
-              <input
-                id="pet-weight-25-50"
-                name="pet-weight"
-                type="radio"
-                value="25-50"
-              />
-              <label>25-50 lbs</label>
-              <input
-                id="pet-weight-50-100"
-                name="pet-weight"
-                type="radio"
-                value="50-100"
-              />
-              <label>50-100 lbs</label>
-              <input
-                id="pet-weight-100-plus"
-                name="pet-weight"
-                type="radio"
-                value="100+"
-              />
-              <label>100+ lbs</label>
+              <RadioGroup
+                containerStyle="options-container2"
+                onChange={onChange}
+              >
+                {options2.map((option) => (
+                  <Radio
+                    value={option}
+                    render={({ isSelected }) => (
+                      <button
+                        className="option2"
+                        style={{
+                          backgroundColor: ` ${
+                            isSelected ? "#000000" : "#ffffff"
+                          } `,
+                          color: ` ${
+                            isSelected ? "#fff" : "#000"
+                          } `,
+                        }}
+                      >
+                        {option}
+                      </button>
+                    )}
+                  />
+                ))}
+              </RadioGroup>
             </div>
           </div>
         </header>
@@ -153,6 +156,7 @@ const App = () => {
             <button id="next">Next</button>
           </div>
         </footer>
+       
       </div>
     </div>
   );
