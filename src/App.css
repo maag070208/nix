@@ -29,10 +29,10 @@ body {
 
 
 .left-container {
-  background: #807182;
-  overflow: hidden;
-  padding: 40px 0 0 0;
+  background: url("https://desarrollos.nixgp.com/wp-content/uploads/2020/11/Lobo-7.png") center no-repeat;
   position: relative;
+  background-size: 350px;
+  background-position-y: -12px;
   text-align: center;
   width: 300px;
 }
@@ -107,7 +107,7 @@ body {
 }
 .right-container footer {
   align-items: center;
-  background: #fff;
+  background: rgba(0, 0, 0, 0);
   display: grid;
   padding: 5px 40px;
 }

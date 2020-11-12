@@ -23,6 +23,7 @@ const App = () => {
   const [size, setSize] = useState(null);
   const onChange = (option) => {
     setSize(option);
+    console.log(size);
   };
 
  
@@ -32,11 +33,6 @@ const App = () => {
     <div className="signup-container">
       <div className="left-container">
         <div className="puppy">
-          <img
-            className="imgLogo"
-            alt="Hola"
-            src="https://desarrollos.nixgp.com/wp-content/uploads/2020/11/Lobo-2.png "
-          />
         </div>
       </div>
       <div className="right-container">
@@ -83,7 +79,8 @@ const App = () => {
             <div className="pets-gender">
               <label>Fecha</label>
               <div className="radio-container">
-                <DatePicker selected={date} onChange={handleDateChange} />
+                <DatePicker selected={date} 
+                onChange={handleDateChange} />
               </div>
             </div>
             <div className="pets-spayed-neutered">
